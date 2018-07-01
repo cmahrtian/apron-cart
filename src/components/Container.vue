@@ -1,7 +1,9 @@
 <template>
   <div class="hello">
     <BreadcrumbList></BreadcrumbList>
-    <ProductDescriptor :product="product"></ProductDescriptor>
+    <ProductDescriptor :product="product"
+      :displayedImage="displayedImage">
+    </ProductDescriptor>
   </div>
 </template>
 
@@ -17,6 +19,7 @@ export default {
   },
   data () {
     return {
+      displayedImage: require('../assets/product-large-a.jpg'),
       product: {
         name: 'Williams-Sonoma Classic Apron, French Blue',
         description: 'A generously sized apron is a necessity in any kitchen, and ours will brighten yours with lively color. Sewn of thick cotton, it can be personalized or monogrammed with up to nine characters, all the same height, embroidered in your choice of color. An apron of this quality makes a welcome gift for any cook.',
@@ -26,7 +29,19 @@ export default {
           'Roomy front pockets hold small tools.',
           'Machine-wash.'
         ],
-        price: 19.95
+        price: 19.95,
+        large_images: [
+          '../assets/product-large-a.jpg',
+          '../assets/product-large-b.jpg',
+          '../assets/product-large-c.jpg',
+          '../assets/product-large-d.jpg'
+        ],
+        small_images: [
+          '../assets/product-small-a.jpg',
+          '../assets/product-small-b.jpg',
+          '../assets/product-small-c.jpg',
+          '../assets/product-small-d.jpg'
+        ]
       }
     }
   }
