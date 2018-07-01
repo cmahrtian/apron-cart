@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="./assets/WS_logo.png">
+    <img id="logo" src="./assets/WS_logo.png">
     <Navbar></Navbar>
     <router-view/>
     <Footer></Footer>
@@ -23,8 +23,16 @@ export default {
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  text-align: center;
   margin: 15px auto;
   width: 1020px;
+}
+
+#logo {
+  display: block;
+  margin: 0 auto;
+}
+
+Navbar, Footer {
+  text-align: center;
 }
 </style>

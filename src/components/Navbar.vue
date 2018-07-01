@@ -25,8 +25,8 @@ export default {
 <style scoped>
 .navbar ul {
   list-style-type: none;
-  margin: 1% auto;
-  padding: 4px;
+  margin: 1% 0;
+  padding: 4px 0;
   overflow: hidden;
   background: #2d2d2d;
   text-align: center;
@@ -44,7 +44,6 @@ li {
 
 li:nth-child(11) {
   border-left: 1px solid;
-  /* padding: 9px 10px; */
 }
 
 li:hover {

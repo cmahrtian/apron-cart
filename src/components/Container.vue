@@ -1,12 +1,18 @@
 <template>
   <div class="hello">
+    <BreadcrumbList></BreadcrumbList>
     <h1>Future home of Williams Sonoma apron page</h1>
   </div>
 </template>
 
 <script>
+import BreadcrumbList from './BreadcrumbList'
+
 export default {
-  name: 'Container'
+  name: 'Container',
+  components: {
+    BreadcrumbList
+  }
 }
 </script>
 
