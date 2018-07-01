@@ -11,7 +11,7 @@ export default {
 <style lang="scss" scoped>
 
 footer {
-    font-size: 10px;
+  font-size: 10px;
 }
 
 </style>
