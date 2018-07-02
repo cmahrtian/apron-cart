@@ -1,6 +1,7 @@
 <template>
   <div class="descriptor">
     <div>
+      <BreadcrumbList></BreadcrumbList>
       <img :src="displayedImage" alt="main product image">
       <br>
       <img v-for="(image, index) in product.small_images"
@@ -25,16 +26,50 @@
 </template>
 
 <script>
+import BreadcrumbList from './BreadcrumbList'
+
 export default {
+  name: 'ProductDescriptor',
+  components: {
+    BreadcrumbList
+  },
   data () {
     return {
-      displayedImage: require('../assets/product-large-a.jpg')
+      displayedImage: require('../assets/product-large-a.jpg'),
+      product: {
+        name: 'Williams-Sonoma Classic Apron, French Blue',
+        description: 'A generously sized apron is a necessity in any kitchen, and ours will brighten yours with lively color. Sewn of thick cotton, it can be personalized or monogrammed with up to nine characters, all the same height, embroidered in your choice of color. An apron of this quality makes a welcome gift for any cook.',
+        attributes: [
+          'Durable 100% cotton construction.',
+          'Adjustable neckband ensures a good fit.',
+          'Roomy front pockets hold small tools.',
+          'Machine-wash.'
+        ],
+        price: 19.95,
+        colors: [
+          'French Blue',
+          'Striped Gray',
+          'Striped Lime',
+          'Striped Red'
+        ],
+        large_images: [
+          require('../assets/product-large-a.jpg'),
+          require('../assets/product-large-b.jpg'),
+          require('../assets/product-large-c.jpg'),
+          require('../assets/product-large-d.jpg')
+        ],
+        small_images: [
+          require('../assets/product-small-a.jpg'),
+          require('../assets/product-small-b.jpg'),
+          require('../assets/product-small-c.jpg'),
+          require('../assets/product-small-d.jpg')
+        ]
+      }
     }
   },
-  name: 'ProductDescriptor',
-  props: {
-    product: Object
-  },
+  // props: {
+  //   product: Object
+  // },
   methods: {
     changeDisplayedImage (index) {
       this.displayedImage = this.product.large_images[index]

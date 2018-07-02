@@ -28,6 +28,12 @@ export default {
           'Machine-wash.'
         ],
         price: 19.95,
+        colors: [
+          'French Blue',
+          'Striped Gray',
+          'Striped Lime',
+          'Striped Red'
+        ],
         large_images: [
           require('../assets/product-large-a.jpg'),
           require('../assets/product-large-b.jpg'),
