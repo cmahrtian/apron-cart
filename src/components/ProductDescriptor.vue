@@ -1,17 +1,18 @@
 <template>
   <div class="descriptor">
     <div>
-      <BreadcrumbList></BreadcrumbList>
+      <BreadcrumbList :product="product"
+        :displayedColor="displayedColor"></BreadcrumbList>
       <img :src="displayedImage" alt="main product image">
       <br>
       <img v-for="(image, index) in product.small_images"
         :key="index"
         :src="image"
-        v-on:mouseover="changeDisplayedImage(index)"
+        v-on:mouseover="changeSelectedColor(index)"
         alt="thumbnail product image">
     </div>
     <div>
-      <h2>{{ product.name }}</h2>
+      <h3>{{ product.name }}, {{ displayedColor }}</h3>
       <p>{{ product.description }}</p>
       <ul>
         <li v-for="(attribute, index) in product.attributes"
@@ -35,9 +36,10 @@ export default {
   },
   data () {
     return {
-      displayedImage: require('../assets/product-large-a.jpg'),
+      selectedImage: null,
+      selectedColor: null,
       product: {
-        name: 'Williams-Sonoma Classic Apron, French Blue',
+        name: 'Williams-Sonoma Classic Apron',
         description: 'A generously sized apron is a necessity in any kitchen, and ours will brighten yours with lively color. Sewn of thick cotton, it can be personalized or monogrammed with up to nine characters, all the same height, embroidered in your choice of color. An apron of this quality makes a welcome gift for any cook.',
         attributes: [
           'Durable 100% cotton construction.',
@@ -67,12 +69,18 @@ export default {
       }
     }
   },
-  // props: {
-  //   product: Object
-  // },
+  computed: {
+    displayedImage () {
+      return this.selectedImage ? this.selectedImage : this.product.large_images[0]
+    },
+    displayedColor () {
+      return this.selectedColor ? this.selectedColor : this.product.colors[0]
+    }
+  },
   methods: {
-    changeDisplayedImage (index) {
-      this.displayedImage = this.product.large_images[index]
+    changeSelectedColor (index) {
+      this.selectedImage = this.product.large_images[index]
+      this.selectedColor = this.product.colors[index]
     }
   }
 }
@@ -82,7 +90,7 @@ export default {
   .descriptor {
     display: grid;
     grid-template-columns: auto auto;
-    grid-gap: 1%;
+    grid-gap: 2%;
   }
 
   img:nth-child(n+2):hover {

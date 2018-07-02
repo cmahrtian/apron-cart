@@ -4,13 +4,17 @@
     <li>Housekeeping</li>
     <li>Aprons</li>
     <li>Adult Aprons</li>
-    <li>Williams-Sonoma Classic Apron, French Blue</li>
+    <li>{{ product.name }}, {{ displayedColor }}</li>
   </ul>
 </template>
 
 <script>
 export default {
-  name: 'BreadcrumbList'
+  name: 'BreadcrumbList',
+  props: {
+    displayedColor: String,
+    product: Object
+  }
 }
 </script>
 
