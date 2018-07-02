@@ -17,6 +17,7 @@
           :key="index">{{ attribute}}</li>
       </ul>
       <h2>${{ product.price }}</h2>
+      <input type="number" placeholder="QTY" step="1">
     </div>
   </div>
 </template>
@@ -33,9 +34,6 @@ export default {
     product: Object
   },
   methods: {
-    sayIndex (index) {
-      console.log(`Image #${index}`)
-    },
     changeDisplayedImage (index) {
       this.displayedImage = this.product.large_images[index]
     }
@@ -56,6 +54,14 @@ export default {
 
   img:nth-child(n+3) {
     margin-left: 5%;
+  }
+
+  input {
+    width: 50px;
+    padding: 8px 5px;
+    margin: 6px 0;
+    font-size: 14px;
+    text-align: center;
   }
 
 </style>
