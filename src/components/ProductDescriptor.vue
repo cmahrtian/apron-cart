@@ -18,6 +18,8 @@
       </ul>
       <h2>${{ product.price }}</h2>
       <input type="number" placeholder="QTY" step="1">
+      <br>
+      <button type="button"></button>
     </div>
   </div>
 </template>
@@ -62,6 +64,13 @@ export default {
     margin: 6px 0;
     font-size: 14px;
     text-align: center;
+  }
+
+  button {
+    width: 149px;
+    height: 41px;
+    margin-top: 10px;
+    background: url('../assets/button-add-to-cart.png') no-repeat;
   }
 
 </style>
