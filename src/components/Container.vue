@@ -31,16 +31,16 @@ export default {
         ],
         price: 19.95,
         large_images: [
-          '../assets/product-large-a.jpg',
-          '../assets/product-large-b.jpg',
-          '../assets/product-large-c.jpg',
-          '../assets/product-large-d.jpg'
+          require('../assets/product-large-a.jpg'),
+          require('../assets/product-large-b.jpg'),
+          require('../assets/product-large-c.jpg'),
+          require('../assets/product-large-d.jpg')
         ],
         small_images: [
-          '../assets/product-small-a.jpg',
-          '../assets/product-small-b.jpg',
-          '../assets/product-small-c.jpg',
-          '../assets/product-small-d.jpg'
+          require('../assets/product-small-a.jpg'),
+          require('../assets/product-small-b.jpg'),
+          require('../assets/product-small-c.jpg'),
+          require('../assets/product-small-d.jpg')
         ]
       }
     }

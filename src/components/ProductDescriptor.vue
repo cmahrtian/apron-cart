@@ -1,8 +1,12 @@
 <template>
   <div class="descriptor">
     <div>
-      <!-- <img src="../assets/product-large-a.jpg" alt=""> -->
       <img :src="displayedImage" alt="main product image">
+      <br>
+      <img v-for="(image, index) in product.small_images"
+        :key="index"
+        :src="image"
+        alt="thumbnail product image">
     </div>
     <div>
       <h2>{{ product.name }}</h2>
@@ -31,6 +35,10 @@ export default {
     display: grid;
     grid-template-columns: auto auto;
     grid-gap: 1%;
+  }
+
+  img:nth-child(n+3) {
+    margin-left: 4%;
   }
 
 </style>
