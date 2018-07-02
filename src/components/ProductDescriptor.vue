@@ -6,6 +6,7 @@
       <img v-for="(image, index) in product.small_images"
         :key="index"
         :src="image"
+        v-on:mouseover="changeDisplayedImage(index)"
         alt="thumbnail product image">
     </div>
     <div>
@@ -22,10 +23,22 @@
 
 <script>
 export default {
+  data () {
+    return {
+      displayedImage: require('../assets/product-large-a.jpg')
+    }
+  },
   name: 'ProductDescriptor',
   props: {
-    product: Object,
-    displayedImage: String
+    product: Object
+  },
+  methods: {
+    sayIndex (index) {
+      console.log(`Image #${index}`)
+    },
+    changeDisplayedImage (index) {
+      this.displayedImage = this.product.large_images[index]
+    }
   }
 }
 </script>
@@ -37,8 +50,12 @@ export default {
     grid-gap: 1%;
   }
 
+  img:nth-child(n+2):hover {
+    border: 2px solid black;
+  }
+
   img:nth-child(n+3) {
-    margin-left: 4%;
+    margin-left: 5%;
   }
 
 </style>

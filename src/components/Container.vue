@@ -1,8 +1,7 @@
 <template>
   <div class="hello">
     <BreadcrumbList></BreadcrumbList>
-    <ProductDescriptor :product="product"
-      :displayedImage="displayedImage">
+    <ProductDescriptor :product="product">
     </ProductDescriptor>
   </div>
 </template>
@@ -19,7 +18,6 @@ export default {
   },
   data () {
     return {
-      displayedImage: require('../assets/product-large-a.jpg'),
       product: {
         name: 'Williams-Sonoma Classic Apron, French Blue',
         description: 'A generously sized apron is a necessity in any kitchen, and ours will brighten yours with lively color. Sewn of thick cotton, it can be personalized or monogrammed with up to nine characters, all the same height, embroidered in your choice of color. An apron of this quality makes a welcome gift for any cook.',
