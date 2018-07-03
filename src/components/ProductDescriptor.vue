@@ -8,6 +8,7 @@
       <img v-for="(image, index) in product.small_images"
         :key="index"
         :src="image"
+        class="thumbnail"
         v-on:mouseover="changeSelectedColor(index)"
         alt="thumbnail product image">
     </div>
@@ -98,7 +99,7 @@ export default {
     grid-gap: 2%;
   }
 
-  img:nth-child(n+2):hover {
+  .thumbnail:hover {
     border: 2px solid black;
   }
 

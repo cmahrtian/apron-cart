@@ -34,7 +34,7 @@ export default {
 
 <style scoped>
   .expander {
-    border-width: 1px 0;
+    border-width: 1px 0 0;
     background-color: white;
     padding: 18px;
     width: 100%;
@@ -45,14 +45,21 @@ export default {
   }
 
   .content {
-    padding: 0 18px;
-    display: none;
-    overflow: hidden;
-    background-color: white;
+    height: 0;
+    margin: 0 !important;
+    transform: scaleY(0);
+    transition: transform 0.5s ease-out;
   }
 
-  .active {
-    display: block;
-    transition: max-height 1s ease-out;
+  .content.active {
+    padding: 0 18px;
+    overflow: hidden;
+    height: auto;
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+
+  .content p {
+    margin: 0 0 1em;
   }
 </style>
