@@ -2,20 +2,39 @@
   <div class="modal" v-bind:class="{ displayed: modalDisplaying }">
     <div class="modal-content">
       <span class="close" v-on:click="closeModal">&times;</span>
-      <h1>This is your shopping cart!</h1>
+      <h3>Thanks for your order! Here's what's in your cart:</h3>
+      <ul>
+        <li v-for="(item, index) in cart" :key="index">
+          <img :src="item.image" alt="">
+          <div>
+            <p>{{ item.productName }}, {{ item.color}}</p>
+            <p>${{ item.price }}</p>
+          </div>
+          <input type="number" v-model="item.quantity">
+        </li>
+      </ul>
+      <h2>Total: ${{ cartTotal }}</h2>
     </div>
   </div>
 </template>
 
 <script>
+import sumBy from 'lodash.sumby'
+
 export default {
   name: 'Modal',
   props: {
-    modalDisplaying: Boolean
+    modalDisplaying: Boolean,
+    cart: Array
   },
   methods: {
     closeModal () {
       this.$emit('closeModal')
+    }
+  },
+  computed: {
+    cartTotal () {
+      return sumBy(this.cart, 'totalPrice').toFixed(2)
     }
   }
 }
@@ -57,5 +76,24 @@ export default {
     color: black;
     text-decoration: none;
     cursor: pointer;
+  }
+
+  ul {
+    list-style-type: none;
+  }
+
+  li {
+    display: grid;
+    grid-template-columns: 20% 70% 10%;
+    max-width: 80%;
+  }
+
+  li input {
+    height: 10px;
+    width: 50px;
+    padding: 8px 5px;
+    margin: 6px 0;
+    font-size: 14px;
+    text-align: center;
   }
 </style>

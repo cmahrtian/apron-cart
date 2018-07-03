@@ -20,15 +20,20 @@
           :key="index">{{ attribute}}</li>
       </ul>
       <h2>${{ product.price }}</h2>
-      <input type="number" placeholder="QTY" step="1">
+      <input type="number"
+        placeholder="QTY"
+        step="1"
+        min="1"
+        v-model="quantity">
       <br>
-      <button type="button" v-on:click="toggleModal"></button>
+      <button type="button" v-on:click="addToCart(); toggleModal();"></button>
       <Collapsible></Collapsible>
       <Collapsible></Collapsible>
       <Collapsible></Collapsible>
     </div>
     <Modal :modalDisplaying="modalDisplaying"
-      v-on:closeModal="toggleModal"></Modal>
+      :cart="cart"
+      v-on:closeModal="toggleModal(); resetQuantity();"></Modal>
   </div>
 </template>
 
@@ -48,7 +53,10 @@ export default {
     return {
       modalDisplaying: false,
       selectedImage: null,
+      selectedThumbnail: null,
       selectedColor: null,
+      quantity: null,
+      cart: [],
       product: {
         name: 'Williams-Sonoma Classic Apron',
         description: 'A generously sized apron is a necessity in any kitchen, and ours will brighten yours with lively color. Sewn of thick cotton, it can be personalized or monogrammed with up to nine characters, all the same height, embroidered in your choice of color. An apron of this quality makes a welcome gift for any cook.',
@@ -86,15 +94,32 @@ export default {
     },
     displayedColor () {
       return this.selectedColor ? this.selectedColor : this.product.colors[0]
+    },
+    displayedThumbnail () {
+      return this.selectedThumbnail ? this.selectedThumbnail : this.product.small_images[0]
     }
   },
   methods: {
     changeSelectedColor (index) {
       this.selectedImage = this.product.large_images[index]
+      this.selectedThumbnail = this.product.small_images[index]
       this.selectedColor = this.product.colors[index]
+    },
+    addToCart () {
+      this.cart.push({
+        productName: this.product.name,
+        price: this.product.price,
+        color: this.displayedColor,
+        image: this.displayedThumbnail,
+        quantity: parseInt(this.quantity),
+        totalPrice: parseFloat(this.product.price) * parseInt(this.quantity)
+      })
     },
     toggleModal () {
       this.modalDisplaying = !this.modalDisplaying
+    },
+    resetQuantity () {
+      this.quantity = null
     }
   }
 }
