@@ -22,26 +22,31 @@
       <h2>${{ product.price }}</h2>
       <input type="number" placeholder="QTY" step="1">
       <br>
-      <button type="button"></button>
+      <button type="button" v-on:click="toggleModal"></button>
       <Collapsible></Collapsible>
       <Collapsible></Collapsible>
       <Collapsible></Collapsible>
     </div>
+    <Modal :modalDisplaying="modalDisplaying"
+      v-on:closeModal="toggleModal"></Modal>
   </div>
 </template>
 
 <script>
 import BreadcrumbList from './BreadcrumbList'
 import Collapsible from './Collapsible'
+import Modal from './Modal'
 
 export default {
   name: 'ProductDescriptor',
   components: {
     BreadcrumbList,
-    Collapsible
+    Collapsible,
+    Modal
   },
   data () {
     return {
+      modalDisplaying: false,
       selectedImage: null,
       selectedColor: null,
       product: {
@@ -87,6 +92,9 @@ export default {
     changeSelectedColor (index) {
       this.selectedImage = this.product.large_images[index]
       this.selectedColor = this.product.colors[index]
+    },
+    toggleModal () {
+      this.modalDisplaying = !this.modalDisplaying
     }
   }
 }
@@ -120,6 +128,7 @@ export default {
     height: 41px;
     margin: 5% 0;
     background: url('../assets/button-add-to-cart.png') no-repeat;
+    cursor: pointer;
   }
 
 </style>
