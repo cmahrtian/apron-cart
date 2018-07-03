@@ -22,17 +22,22 @@
       <input type="number" placeholder="QTY" step="1">
       <br>
       <button type="button"></button>
+      <Collapsible></Collapsible>
+      <Collapsible></Collapsible>
+      <Collapsible></Collapsible>
     </div>
   </div>
 </template>
 
 <script>
 import BreadcrumbList from './BreadcrumbList'
+import Collapsible from './Collapsible'
 
 export default {
   name: 'ProductDescriptor',
   components: {
-    BreadcrumbList
+    BreadcrumbList,
+    Collapsible
   },
   data () {
     return {
@@ -112,7 +117,7 @@ export default {
   button {
     width: 149px;
     height: 41px;
-    margin-top: 10px;
+    margin: 5% 0;
     background: url('../assets/button-add-to-cart.png') no-repeat;
   }
 
