@@ -26,7 +26,7 @@
         min="1"
         v-model="quantity">
       <br>
-      <button type="button" v-on:click="addToCart(); toggleModal();"></button>
+      <button type="button" v-on:click="addToCart"></button>
       <Collapsible></Collapsible>
       <Collapsible></Collapsible>
       <Collapsible></Collapsible>
@@ -105,18 +105,23 @@ export default {
       this.selectedThumbnail = this.product.small_images[index]
       this.selectedColor = this.product.colors[index]
     },
-    addToCart () {
-      this.cart.push({
-        productName: this.product.name,
-        price: this.product.price,
-        color: this.displayedColor,
-        image: this.displayedThumbnail,
-        quantity: parseInt(this.quantity),
-        totalPrice: parseFloat(this.product.price) * parseInt(this.quantity)
-      })
-    },
     toggleModal () {
       this.modalDisplaying = !this.modalDisplaying
+    },
+    addToCart () {
+      if (this.quantity) {
+        this.cart.push({
+          productName: this.product.name,
+          price: this.product.price,
+          color: this.displayedColor,
+          image: this.displayedThumbnail,
+          quantity: parseInt(this.quantity),
+          totalPrice: parseFloat(this.product.price) * parseInt(this.quantity)
+        })
+        this.toggleModal()
+      } else {
+        alert('Please add at least one of the selected item to your cart')
+      }
     },
     resetQuantity () {
       this.quantity = null
