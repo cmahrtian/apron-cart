@@ -58,11 +58,26 @@ export default {
   }
 
   .modal-content {
+    position: relative;
     background-color: #fefefe;
-    padding: 20px;
+    padding: 20px 40px;
     border: 1px solid #888;
-    width: 80%;
+    width: 60%;
     margin: 0 auto;
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.6s;
+    animation-name: animatetop;
+    animation-duration: 0.6s;
+  }
+
+  @-webkit-keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 200px; opacity: 1}
+  }
+
+  @keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 200px; opacity: 1}
   }
 
   .close {
@@ -95,5 +110,9 @@ export default {
     margin: 6px 0;
     font-size: 14px;
     text-align: center;
+  }
+
+  h2 {
+    text-align: right;
   }
 </style>
