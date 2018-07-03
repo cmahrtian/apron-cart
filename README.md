@@ -16,6 +16,6 @@ npm run dev
 
 Open up a new tab or window in the browser of your choosing and navigate to [http://localhost:8080](http://localhost:8080). You should see the following appear in your browser:
 
-![alt text]('./src/assets/WS-Markup-Challenge.png')
+![alt text](https://raw.githubusercontent.com/cmahrtian/apron-cart/master/src/assets/WS-Markup-Challenge.png "Logo Title Text 1")
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
