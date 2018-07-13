@@ -24,7 +24,7 @@ export default {
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   margin: 15px auto;
-  width: 1020px;
+  width: 1024px;
 }
 
 #logo {
